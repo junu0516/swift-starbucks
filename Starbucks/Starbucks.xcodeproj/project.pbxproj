@@ -12,6 +12,7 @@
 		B5891E7A2829F625003F379D /* InitialEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E792829F625003F379D /* InitialEventViewController.swift */; };
 		B5891E7C282A3B89003F379D /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E7B282A3B89003F379D /* NetworkHandler.swift */; };
 		B5891E7F282A3D5A003F379D /* NetworkHandlable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E7E282A3D5A003F379D /* NetworkHandlable.swift */; };
+		B5891E8D282AC474003F379D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E8C282AC474003F379D /* Observable.swift */; };
 		B59B32C52829034200301A41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32C42829034200301A41 /* AppDelegate.swift */; };
 		B59B32C72829034200301A41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32C62829034200301A41 /* SceneDelegate.swift */; };
 		B59B32C92829034200301A41 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32C82829034200301A41 /* MainTabBarController.swift */; };
@@ -52,6 +53,7 @@
 		B5891E792829F625003F379D /* InitialEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialEventViewController.swift; sourceTree = "<group>"; };
 		B5891E7B282A3B89003F379D /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 		B5891E7E282A3D5A003F379D /* NetworkHandlable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandlable.swift; sourceTree = "<group>"; };
+		B5891E8C282AC474003F379D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		B59B32C12829034200301A41 /* Starbucks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Starbucks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59B32C42829034200301A41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59B32C62829034200301A41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			children = (
 				B5891E7D282A3D4C003F379D /* Protocols */,
 				B5891E7B282A3B89003F379D /* NetworkHandler.swift */,
+				B5891E8C282AC474003F379D /* Observable.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5891E8D282AC474003F379D /* Observable.swift in Sources */,
 				B5891E7A2829F625003F379D /* InitialEventViewController.swift in Sources */,
 				B59B32C92829034200301A41 /* MainTabBarController.swift in Sources */,
 				B59B32FA2829201600301A41 /* OrderViewController.swift in Sources */,

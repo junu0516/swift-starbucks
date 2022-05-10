@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		30433BBAB3F8922BD6D56AFF /* Pods_Starbucks_StarbucksUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223004BC9FBCC6D150F047B5 /* Pods_Starbucks_StarbucksUITests.framework */; };
 		58B04D2F19B8271A9DA8FF03 /* Pods_StarbucksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F97FD557F08B4CD36441316A /* Pods_StarbucksTests.framework */; };
+		B5891E7A2829F625003F379D /* InitialEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E792829F625003F379D /* InitialEventViewController.swift */; };
+		B5891E7C282A3B89003F379D /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E7B282A3B89003F379D /* NetworkHandler.swift */; };
+		B5891E7F282A3D5A003F379D /* NetworkHandlable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E7E282A3D5A003F379D /* NetworkHandlable.swift */; };
 		B59B32C52829034200301A41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32C42829034200301A41 /* AppDelegate.swift */; };
 		B59B32C72829034200301A41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32C62829034200301A41 /* SceneDelegate.swift */; };
 		B59B32C92829034200301A41 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32C82829034200301A41 /* MainTabBarController.swift */; };
@@ -46,6 +49,9 @@
 		4A91003CA6EB79CAC0B2142C /* Pods-StarbucksTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarbucksTests.debug.xcconfig"; path = "Target Support Files/Pods-StarbucksTests/Pods-StarbucksTests.debug.xcconfig"; sourceTree = "<group>"; };
 		850174743D6574E43DA86A5A /* Pods_Starbucks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Starbucks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A433D0F929C5E8A4191D0396 /* Pods-StarbucksTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarbucksTests.release.xcconfig"; path = "Target Support Files/Pods-StarbucksTests/Pods-StarbucksTests.release.xcconfig"; sourceTree = "<group>"; };
+		B5891E792829F625003F379D /* InitialEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialEventViewController.swift; sourceTree = "<group>"; };
+		B5891E7B282A3B89003F379D /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
+		B5891E7E282A3D5A003F379D /* NetworkHandlable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandlable.swift; sourceTree = "<group>"; };
 		B59B32C12829034200301A41 /* Starbucks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Starbucks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59B32C42829034200301A41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59B32C62829034200301A41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +122,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B5891E7D282A3D4C003F379D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B5891E7E282A3D5A003F379D /* NetworkHandlable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		B59B32B82829034200301A41 = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +194,8 @@
 		B59B32F5282914DC00301A41 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B5891E7D282A3D4C003F379D /* Protocols */,
+				B5891E7B282A3B89003F379D /* NetworkHandler.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -190,6 +206,7 @@
 				B59B32C82829034200301A41 /* MainTabBarController.swift */,
 				B59B32F72829200400301A41 /* HomeViewController.swift */,
 				B59B32F92829201600301A41 /* OrderViewController.swift */,
+				B5891E792829F625003F379D /* InitialEventViewController.swift */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -432,11 +449,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5891E7A2829F625003F379D /* InitialEventViewController.swift in Sources */,
 				B59B32C92829034200301A41 /* MainTabBarController.swift in Sources */,
 				B59B32FA2829201600301A41 /* OrderViewController.swift in Sources */,
 				B59B32C52829034200301A41 /* AppDelegate.swift in Sources */,
 				B59B32C72829034200301A41 /* SceneDelegate.swift in Sources */,
 				B59B32F82829200400301A41 /* HomeViewController.swift in Sources */,
+				B5891E7F282A3D5A003F379D /* NetworkHandlable.swift in Sources */,
+				B5891E7C282A3B89003F379D /* NetworkHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -134,6 +134,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		B5891E80282AAA17003F379D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B59B32F72829200400301A41 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		B5891E89282AC0F0003F379D /* InitialEvent */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,8 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				B5891E89282AC0F0003F379D /* InitialEvent */,
+				B5891E80282AAA17003F379D /* Home */,
 				B59B32C82829034200301A41 /* MainTabBarController.swift */,
-				B59B32F72829200400301A41 /* HomeViewController.swift */,
 				B59B32F92829201600301A41 /* OrderViewController.swift */,
 			);
 			path = Present;

@@ -9,7 +9,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = MainTabBarController()
+        let eventInvalidated = UserDefaults.standard.bool(forKey: "eventInvalidated")
+        window.rootViewController = eventInvalidated ? MainTabBarController() : InitialEventViewController()
         window.makeKeyAndVisible()
         self.window = window
     }

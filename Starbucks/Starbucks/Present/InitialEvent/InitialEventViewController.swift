@@ -92,7 +92,8 @@ final class InitialEventViewController: UIViewController {
     }
     
     private func loadEventImage() {
-        networkHandler.request(url: .initialEventImage, method: .get, contentType: .image){ [self] result in
+        networkHandler.request(url: .initialEventImage, method: .get, contentType: .image){ [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let data):
                 self.eventImageView.image = UIImage(data: data)

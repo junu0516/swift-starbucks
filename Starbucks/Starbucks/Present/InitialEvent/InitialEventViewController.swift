@@ -25,9 +25,9 @@ final class InitialEventViewController: UIViewController {
         button.layer.cornerRadius = 15
         button.setTitle("다시 보지 않기", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
-        button.addAction(UIAction(handler: { _ in
+        button.addAction(UIAction(handler: { [weak self] _ in
             UserDefaults.standard.set(true, forKey: "eventInvalidated")
-            self.moveToMainTabbarView()
+            self?.moveToMainTabbarView()
         }), for: .touchDown)
         return button
     }()
@@ -39,8 +39,8 @@ final class InitialEventViewController: UIViewController {
         button.setTitleColor(UIColor.white, for: .normal)
         button.backgroundColor = UIColor(named: "green_closeButton")
         button.layer.cornerRadius = 15
-        button.addAction(UIAction(handler: { _ in
-            self.moveToMainTabbarView()
+        button.addAction(UIAction(handler: { [weak self] _ in
+            self?.moveToMainTabbarView()
         }), for: .touchDown)
         return button
     }()

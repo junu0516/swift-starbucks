@@ -6,7 +6,7 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        let homeView = HomeViewController()
+        let homeView = HomeViewController(homeViewModel: HomeViewModel())
         let orderView = OrderViewController()
 
         homeView.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), selectedImage: nil)

@@ -3,6 +3,8 @@ import UIKit
 
 final class InitialEventViewController: UIViewController {
     
+    private let initialEventViewModel: InitialEventViewModel = InitialEventViewModel(networkHandler: NetworkHandler())
+    
     private lazy var eventImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -43,26 +45,22 @@ final class InitialEventViewController: UIViewController {
         return button
     }()
     
-    private let networkHandler: NetworkHandlable = NetworkHandler()
-    
-    override func loadView() {
-        super.loadView()
-        loadEventImage()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(eventImageView)
         view.addSubview(buttonBackgroundView)
         buttonBackgroundView.addSubview(invalidationButton)
         buttonBackgroundView.addSubview(closeButton)
-        
+                
         view.backgroundColor = .white
         setLayout()
+        bind()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    private func bind() {
+        initialEventViewModel.eventImage.bind{ [weak self] data in
+            self?.eventImageView.image = UIImage(data: data)
+        }
     }
     
     private func setLayout() {
@@ -89,17 +87,5 @@ final class InitialEventViewController: UIViewController {
         let tabbarView = MainTabBarController()
         tabbarView.modalPresentationStyle = .fullScreen
         self.present(tabbarView, animated: false)
-    }
-    
-    private func loadEventImage() {
-        networkHandler.request(url: .initialEventImage, method: .get, contentType: .image){ [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let data):
-                self.eventImageView.image = UIImage(data: data)
-            case .failure(let error):
-                print(error)
-            }
-        }
     }
 }

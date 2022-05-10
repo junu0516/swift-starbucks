@@ -3,7 +3,7 @@ import UIKit
 
 final class InitialEventViewController: UIViewController {
     
-    private let initialEventViewModel: InitialEventViewModel = InitialEventViewModel(networkHandler: NetworkHandler())
+    private var initialEventViewModel: InitialEventViewModel?
     
     private lazy var eventImageView: UIImageView = {
         let imageView = UIImageView()
@@ -45,6 +45,11 @@ final class InitialEventViewController: UIViewController {
         return button
     }()
     
+    convenience init(initialEventViewModel: InitialEventViewModel) {
+        self.init()
+        self.initialEventViewModel = initialEventViewModel
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(eventImageView)
@@ -58,7 +63,7 @@ final class InitialEventViewController: UIViewController {
     }
     
     private func bind() {
-        initialEventViewModel.eventImage.bind{ [weak self] data in
+        initialEventViewModel?.eventImage.bind{ [weak self] data in
             self?.eventImageView.image = UIImage(data: data)
         }
     }

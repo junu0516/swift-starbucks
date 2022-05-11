@@ -16,17 +16,6 @@ enum ContentType {
     }
 }
 
-enum EndPoint {
-    case initialEventImage
-    
-    var urlString: String {
-        switch self {
-        case .initialEventImage:
-            return "https://s3.ap-northeast-2.amazonaws.com/lucas-image.codesquad.kr/1627033273796event-bg.png"
-        }
-    }
-}
-
 enum HttpMethod {
     case get
     case post

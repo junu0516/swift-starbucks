@@ -15,6 +15,7 @@
 		B5891E82282AAA82003F379D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E81282AAA82003F379D /* HomeViewModel.swift */; };
 		B5891E8B282AC395003F379D /* InitialEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E8A282AC395003F379D /* InitialEventViewModel.swift */; };
 		B5891E8D282AC474003F379D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E8C282AC474003F379D /* Observable.swift */; };
+		B5891E8F282B8E5B003F379D /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E8E282B8E5B003F379D /* EndPoint.swift */; };
 		B59B32C52829034200301A41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32C42829034200301A41 /* AppDelegate.swift */; };
 		B59B32C72829034200301A41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32C62829034200301A41 /* SceneDelegate.swift */; };
 		B59B32C92829034200301A41 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32C82829034200301A41 /* MainTabBarController.swift */; };
@@ -58,6 +59,7 @@
 		B5891E81282AAA82003F379D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B5891E8A282AC395003F379D /* InitialEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialEventViewModel.swift; sourceTree = "<group>"; };
 		B5891E8C282AC474003F379D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		B5891E8E282B8E5B003F379D /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		B59B32C12829034200301A41 /* Starbucks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Starbucks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59B32C42829034200301A41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59B32C62829034200301A41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				B5891E7D282A3D4C003F379D /* Protocols */,
 				B5891E7B282A3B89003F379D /* NetworkHandler.swift */,
 				B5891E8C282AC474003F379D /* Observable.swift */,
+				B5891E8E282B8E5B003F379D /* EndPoint.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				B5891E8B282AC395003F379D /* InitialEventViewModel.swift in Sources */,
 				B59B32C92829034200301A41 /* MainTabBarController.swift in Sources */,
 				B59B32FA2829201600301A41 /* OrderViewController.swift in Sources */,
+				B5891E8F282B8E5B003F379D /* EndPoint.swift in Sources */,
 				B59B32C52829034200301A41 /* AppDelegate.swift in Sources */,
 				B59B32C72829034200301A41 /* SceneDelegate.swift in Sources */,
 				B59B32F82829200400301A41 /* HomeViewController.swift in Sources */,

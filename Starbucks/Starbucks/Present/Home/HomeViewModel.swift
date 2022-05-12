@@ -21,7 +21,6 @@ final class HomeViewModel {
     func loadUserData() {
         sendApiRequest(url: .homeData, method: .get, contentType: .json) { [weak self] data in
             guard let response = self?.jsonHandler.convertJSONToObject(from: data, to: HomeDataResponse.self) else { return }
-            print(response)
             self?.displayName.value = response.displayName
             self?.mainEvent.value = response.mainEvent
         }

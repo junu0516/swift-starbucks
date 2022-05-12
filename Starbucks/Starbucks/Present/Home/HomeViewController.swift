@@ -71,7 +71,8 @@ final class HomeViewController: UIViewController {
         }
         
         homeViewModel?.mainEvent.bind{ [weak self] mainEvent in
-            self?.homeViewModel?.loadMainImageData(fileName: mainEvent.imageFileName)
+            if mainEvent.imageUrl.count <= 0 { return }
+            self?.homeViewModel?.loadMainImageData(fileName: mainEvent.imageFileName, fileUrl: mainEvent.imageUrl)
         }
     }
     

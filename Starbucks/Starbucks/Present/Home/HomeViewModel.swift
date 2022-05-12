@@ -26,8 +26,8 @@ final class HomeViewModel {
         }
     }
     
-    func loadMainImageData(fileName: String) {
-        sendApiRequest(url: .mainEventImage(fileName: fileName), method: .get, contentType: .image) { [weak self] data in
+    func loadMainImageData(fileName: String, fileUrl: String) {
+        sendApiRequest(url: .mainEventImage(fileName: fileName, fileUrl: fileUrl), method: .get, contentType: .image) { [weak self] data in
             self?.eventImageData.value = data
         }
     }

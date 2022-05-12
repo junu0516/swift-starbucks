@@ -28,6 +28,20 @@ final class HomeViewController: UIViewController {
         return stackView
     }()
     
+    private lazy var mainEventImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleToFill
+        imageView.backgroundColor = .systemGray
+        return imageView
+    }()
+    
+    private lazy var personalRecommendatilTitleView: PersonalRecommendationTitleView = {
+        let recommendationView = PersonalRecommendationTitleView()
+        recommendationView.translatesAutoresizingMaskIntoConstraints = false
+        return recommendationView
+    }()
+    
     private lazy var dummyView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -44,12 +58,25 @@ final class HomeViewController: UIViewController {
         homeScrollView.delegate = self
         addViews()
         setLayout()
+        bind()
+    }
+    
+    private func bind() {
+        homeViewModel?.eventImageData.bind{ [weak self] data in
+            self?.mainEventImageView.image = UIImage(data: data)
+        }
+        
+        homeViewModel?.displayName.bind{ [weak self] displayName in
+            self?.personalRecommendatilTitleView.titleLabel.text = displayName
+        }
     }
     
     private func addViews() {
         view.addSubview(homeHeaderView)
         view.addSubview(homeScrollView)
         homeScrollView.addSubview(contentStackView)
+        contentStackView.addArrangedSubview(mainEventImageView)
+        contentStackView.addArrangedSubview(personalRecommendatilTitleView)
         contentStackView.addArrangedSubview(dummyView)
     }
     
@@ -70,6 +97,13 @@ final class HomeViewController: UIViewController {
         contentStackView.leadingAnchor.constraint(equalTo: homeScrollView.leadingAnchor).isActive = true
         contentStackView.trailingAnchor.constraint(equalTo: homeScrollView.trailingAnchor).isActive = true
         contentStackView.widthAnchor.constraint(equalTo: homeScrollView.widthAnchor).isActive = true
+        
+        mainEventImageView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor).isActive = true
+        mainEventImageView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        
+        personalRecommendatilTitleView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        personalRecommendatilTitleView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        personalRecommendatilTitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         dummyView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor).isActive = true
         dummyView.heightAnchor.constraint(equalToConstant: 1500).isActive = true

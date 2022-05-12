@@ -184,19 +184,11 @@
 		B5891E96282BE33A003F379D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B5891E97282BE340003F379D /* Home */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		B5891E97282BE340003F379D /* Home */ = {
-			isa = PBXGroup;
-			children = (
 				B5891E98282BE35B003F379D /* Recommendation.swift */,
 				B5891E9A282BE3E8003F379D /* HomeDataResponse.swift */,
 				B5891E9D282BE425003F379D /* MainEvent.swift */,
 			);
-			path = Home;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B59B32B82829034200301A41 = {

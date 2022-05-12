@@ -2,9 +2,9 @@ import Foundation
 
 struct HomeDataResponse: Codable {
     private (set) var displayName: String
-    private var personalRecommendations: Recommendation
-    private var mainEvent: MainEvent
-    private var timeRecommendations: Recommendation
+    private (set) var personalRecommendations: Recommendation
+    private (set) var mainEvent: MainEvent
+    private (set) var timeRecommendations: Recommendation
     
     enum CodingKeys: String, CodingKey {
         case displayName = "display-name"

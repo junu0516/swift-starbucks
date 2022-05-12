@@ -1,13 +1,15 @@
 import Foundation
 
 struct MainEvent: Codable {
-    private var imageUrl: String
-    private var imageFileName: String
+    private (set) var imageUrl: String = ""
+    private (set) var imageFileName: String = ""
     
     enum CodingKeys: String, CodingKey {
         case imageUrl = "img_UPLOAD_PATH"
         case imageFileName = "mob_THUM"
     }
+    
+    init() {}
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

@@ -115,8 +115,8 @@ extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let isSwiped = offsetY <= 0
-        let willCollapse = offsetY > 30
-        let collapsableHeight = homeHeaderView.welcomeLabel.frame.height + 40
+        let willCollapse = offsetY > 100
+        let collapsableHeight = homeHeaderView.welcomeLabel.frame.height + 80
         
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.4, delay: 0, options: [], animations: { [weak self] in
             self?.homeHeaderView.welcomeLabel.alpha = isSwiped ? 1.0 : 0.0

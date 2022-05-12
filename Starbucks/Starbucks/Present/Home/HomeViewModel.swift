@@ -3,6 +3,7 @@ import OSLog
 
 final class HomeViewModel {
     
+    private (set) var mainEvent = Observable<MainEvent>(MainEvent())
     private (set) var eventImageData = Observable<Data>(Data())
     private (set) var displayName = Observable<String>("USER NAME")
     private (set) var personalRecommendations = Observable<[Recommendation]>([])
@@ -14,7 +15,6 @@ final class HomeViewModel {
     
     init(networkHandler: NetworkHandlable) {
         self.networkHandler = networkHandler
-        loadMainImageData()
         loadUserData()
     }
     
@@ -23,11 +23,12 @@ final class HomeViewModel {
             guard let response = self?.jsonHandler.convertJSONToObject(from: data, to: HomeDataResponse.self) else { return }
             print(response)
             self?.displayName.value = response.displayName
+            self?.mainEvent.value = response.mainEvent
         }
     }
     
-    func loadMainImageData() {
-        sendApiRequest(url: .mainEventImage, method: .get, contentType: .image) { [weak self] data in
+    func loadMainImageData(fileName: String) {
+        sendApiRequest(url: .mainEventImage(fileName: fileName), method: .get, contentType: .image) { [weak self] data in
             self?.eventImageData.value = data
         }
     }

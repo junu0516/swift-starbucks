@@ -69,6 +69,10 @@ final class HomeViewController: UIViewController {
         homeViewModel?.displayName.bind{ [weak self] displayName in
             self?.personalRecommendatilTitleView.titleLabel.text = displayName
         }
+        
+        homeViewModel?.mainEvent.bind{ [weak self] mainEvent in
+            self?.homeViewModel?.loadMainImageData(fileName: mainEvent.imageFileName)
+        }
     }
     
     private func addViews() {

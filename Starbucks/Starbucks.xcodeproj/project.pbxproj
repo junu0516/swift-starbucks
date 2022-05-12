@@ -17,6 +17,9 @@
 		B5891E8D282AC474003F379D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E8C282AC474003F379D /* Observable.swift */; };
 		B5891E8F282B8E5B003F379D /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E8E282B8E5B003F379D /* EndPoint.swift */; };
 		B5891E92282BD084003F379D /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E91282BD084003F379D /* HomeHeaderView.swift */; };
+		B5891E99282BE35B003F379D /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E98282BE35B003F379D /* Recommendation.swift */; };
+		B5891E9B282BE3E8003F379D /* HomeDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E9A282BE3E8003F379D /* HomeDataResponse.swift */; };
+		B5891E9E282BE425003F379D /* MainEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E9D282BE425003F379D /* MainEvent.swift */; };
 		B5891EA0282CCB2E003F379D /* JSONHandlable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891E9F282CCB2E003F379D /* JSONHandlable.swift */; };
 		B5891EA2282CCB40003F379D /* JSONHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891EA1282CCB40003F379D /* JSONHandler.swift */; };
 		B59B32C52829034200301A41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32C42829034200301A41 /* AppDelegate.swift */; };
@@ -64,6 +67,9 @@
 		B5891E8C282AC474003F379D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		B5891E8E282B8E5B003F379D /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		B5891E91282BD084003F379D /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
+		B5891E98282BE35B003F379D /* Recommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
+		B5891E9A282BE3E8003F379D /* HomeDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataResponse.swift; sourceTree = "<group>"; };
+		B5891E9D282BE425003F379D /* MainEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEvent.swift; sourceTree = "<group>"; };
 		B5891E9F282CCB2E003F379D /* JSONHandlable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHandlable.swift; sourceTree = "<group>"; };
 		B5891EA1282CCB40003F379D /* JSONHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHandler.swift; sourceTree = "<group>"; };
 		B59B32C12829034200301A41 /* Starbucks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Starbucks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +178,24 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		B5891E96282BE33A003F379D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B5891E97282BE340003F379D /* Home */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B5891E97282BE340003F379D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B5891E98282BE35B003F379D /* Recommendation.swift */,
+				B5891E9A282BE3E8003F379D /* HomeDataResponse.swift */,
+				B5891E9D282BE425003F379D /* MainEvent.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		B59B32B82829034200301A41 = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +221,7 @@
 		B59B32C32829034200301A41 /* Starbucks */ = {
 			isa = PBXGroup;
 			children = (
+				B5891E96282BE33A003F379D /* Model */,
 				B59B32F628291FC200301A41 /* Present */,
 				B59B32F5282914DC00301A41 /* Common */,
 				B59B32F4282914CF00301A41 /* Supportings */,
@@ -496,13 +521,16 @@
 			files = (
 				B5891E8D282AC474003F379D /* Observable.swift in Sources */,
 				B5891E7A2829F625003F379D /* InitialEventViewController.swift in Sources */,
+				B5891E9B282BE3E8003F379D /* HomeDataResponse.swift in Sources */,
 				B5891E92282BD084003F379D /* HomeHeaderView.swift in Sources */,
+				B5891E99282BE35B003F379D /* Recommendation.swift in Sources */,
 				B5891E82282AAA82003F379D /* HomeViewModel.swift in Sources */,
 				B5891E8B282AC395003F379D /* InitialEventViewModel.swift in Sources */,
 				B59B32C92829034200301A41 /* MainTabBarController.swift in Sources */,
 				B59B32FA2829201600301A41 /* OrderViewController.swift in Sources */,
 				B5891E8F282B8E5B003F379D /* EndPoint.swift in Sources */,
 				B5891EA0282CCB2E003F379D /* JSONHandlable.swift in Sources */,
+				B5891E9E282BE425003F379D /* MainEvent.swift in Sources */,
 				B59B32C52829034200301A41 /* AppDelegate.swift in Sources */,
 				B5891EA2282CCB40003F379D /* JSONHandler.swift in Sources */,
 				B59B32C72829034200301A41 /* SceneDelegate.swift in Sources */,

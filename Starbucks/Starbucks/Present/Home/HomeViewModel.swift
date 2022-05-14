@@ -6,8 +6,8 @@ final class HomeViewModel {
     private (set) var mainEvent = Observable<MainEvent>(MainEvent())
     private (set) var eventImageData = Observable<Data>(Data())
     private (set) var displayName = Observable<String>("USER NAME")
-    private (set) var personalRecommendations = Observable<[Recommendation]>([])
-    private (set) var timeRecommendations = Observable<[Recommendation]>([])
+    private (set) var personalRecommendations = Observable<Recommendation>(Recommendation())
+    private (set) var timeRecommendations = Observable<Recommendation>(Recommendation())
 
     private var networkHandler: NetworkHandlable?
     private var jsonHandler: JSONHandlable = JSONHandler()

@@ -3,6 +3,7 @@ import UIKit
 final class HomeViewController: UIViewController {
     
     private var homeViewModel: HomeViewModel?
+    private var recommendationViewControllers: [RecommendationCategory: RecommendationViewController] = [:]
     
     private lazy var homeHeaderView: HomeHeaderView = {
         let headerView = HomeHeaderView()
@@ -56,6 +57,10 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         homeScrollView.delegate = self
+        for category in RecommendationCategory.allCases {
+            let viewModel = RecommendationViewModel(networkHandler: NetworkHandler())
+            recommendationViewControllers[category] = RecommendationViewController(recommendationViewModel: viewModel, category: category)
+        }
         addViews()
         setLayout()
         bind()

@@ -19,7 +19,7 @@ final class HomeViewModel {
     }
     
     func loadUserData() {
-        sendApiRequest(url: .homeData, method: .get, contentType: .json) { [weak self] data in
+        sendApiRequest(url: .homeData, method: .get, contentType: .json, body: nil) { [weak self] data in
             guard let response = self?.jsonHandler.convertJSONToObject(from: data, to: HomeDataResponse.self) else { return }
             self?.displayName.value = response.displayName
             self?.mainEvent.value = response.mainEvent
@@ -27,12 +27,12 @@ final class HomeViewModel {
     }
     
     func loadMainImageData(fileName: String, fileUrl: String) {
-        sendApiRequest(url: .mainEventImage(fileName: fileName, fileUrl: fileUrl), method: .get, contentType: .image) { [weak self] data in
+        sendApiRequest(url: .mainEventImage(fileName: fileName, fileUrl: fileUrl), method: .get, contentType: .image, body: nil) { [weak self] data in
             self?.eventImageData.value = data
         }
     }
-    private func sendApiRequest(url: EndPoint, method: HttpMethod, contentType: ContentType, successHandler: @escaping (Data) -> Void) {
-        networkHandler?.request(url: url, method: method, contentType: contentType) { [weak self] result in
+    private func sendApiRequest(url: EndPoint, method: HttpMethod, contentType: ContentType, body: Data?, successHandler: @escaping (Data) -> Void) {
+        networkHandler?.request(url: url, method: method, contentType: contentType, body: body) { [weak self] result in
             switch result {
             case .success(let data):
                 successHandler(data)

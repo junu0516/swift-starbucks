@@ -5,6 +5,7 @@ import Alamofire
 enum ContentType {
     case json
     case image
+    case urlEncoded
     
     var value: String {
         switch self {
@@ -12,6 +13,8 @@ enum ContentType {
             return "image/jpeg"
         case .json:
             return "applicatin/json"
+        case .urlEncoded:
+            return "application/x-www-form-urlencoded; charset=utf-8"
         }
     }
 }
@@ -38,18 +41,18 @@ enum HttpError: Error, CustomStringConvertible{
 struct NetworkHandler: NetworkHandlable{
     
     private let logger: Logger
+    private let jsonHandler: JSONHandlable
     
     init() {
         logger = Logger()
+        jsonHandler = JSONHandler()
     }
     
-    func request(url: EndPoint, method: HttpMethod, contentType: ContentType, completionHandler: @escaping (Result<Data,Error>)->Void){
+    func request(url: EndPoint, method: HttpMethod, contentType: ContentType, body: Data?, completionHandler: @escaping (Result<Data,Error>)->Void){
+        guard var request = try? URLRequest(url: convertToHttps(url: url), method: HTTPMethod(rawValue: "\(method)"), headers: ["Content-Type":contentType.value]) else { return }
+        request.httpBody = contentType == .urlEncoded ? convertJSONToFormData(jsonData: body) : body
         
-        AF.request(convertToHttps(url: url),
-                   method: HTTPMethod(rawValue: "\(method)"),
-                   parameters: nil,
-                   encoding: URLEncoding.default,
-                   headers: ["Content-Type":contentType.value])
+        AF.request(request)
         .validate(statusCode: 200..<300)
         .responseData{response in
             switch response.result {
@@ -63,11 +66,17 @@ struct NetworkHandler: NetworkHandlable{
     
     private func convertToHttps(url: EndPoint) -> String {
         guard var urlComponents = URLComponents(string: url.urlString) else { return url.urlString }
-    
         urlComponents.scheme = "https"
         guard let urlString = urlComponents.string else { return url.urlString }
         return urlString
     }
-
+    
+    private func convertJSONToFormData(jsonData: Data?) -> Data? {
+        guard let jsonData = jsonData else { return nil }
+        guard let parameters = jsonHandler.convertJSONToObject(from: jsonData, to: [String:String].self) else { return nil }
+        var formData: String = ""
+        parameters.forEach { formData += "\($0.key)=\($0.value)&" }
+        return formData.dropLast().data(using: .utf8, allowLossyConversion: true)
+    }
     
 }

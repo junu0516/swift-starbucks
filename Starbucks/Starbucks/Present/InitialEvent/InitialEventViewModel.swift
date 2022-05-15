@@ -11,7 +11,7 @@ final class InitialEventViewModel {
     }
     
     private func loadEventImage() {
-        networkHandler.request(url: .initialEventImage, method: .get, contentType: .image){ [weak self] result in
+        networkHandler.request(url: .initialEventImage, method: .get, contentType: .image, body: nil){ [weak self] result in
             switch result {
             case .success(let data):
                 self?.eventImage.value = data

@@ -36,7 +36,6 @@ final class HomeViewModel {
     
     func loadRecommendationData(productIds: [String]) -> [Data] {
         var list: [Data] = []
-        print(productIds)
         productIds.forEach { [weak self] in
             guard let requestBody = jsonHandler.convertObjectToJSON(from: ProductImageRequest(productCd: $0)) else { return }
             self?.sendApiRequest(url: .productImage, method: .post, contentType: .urlEncoded, body: requestBody) { data in

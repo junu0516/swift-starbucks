@@ -79,6 +79,15 @@ final class HomeViewController: UIViewController {
             if mainEvent.imageUrl.count <= 0 { return }
             self?.homeViewModel?.loadMainImageData(fileName: mainEvent.imageFileName, fileUrl: mainEvent.imageUrl)
         }
+        
+        homeViewModel?.personalRecommendations.bind{ [weak self] recommendation in
+            if recommendation.products.count <= 0 { return }
+            guard let recommendationViewModel = self?.recommendationViewControllers[.personal]?.recommendationViewModel else { return }
+            DispatchQueue.global(qos: .background).async {
+                guard let list = self?.homeViewModel?.loadRecommendationData(productIds: recommendation.products) else { return }
+                recommendationViewModel.recommendations.value = list
+            }
+        }
     }
     
     private func addViews() {

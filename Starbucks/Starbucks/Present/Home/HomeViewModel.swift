@@ -11,6 +11,7 @@ final class HomeViewModel {
 
     private var networkHandler: NetworkHandlable?
     private var jsonHandler: JSONHandlable = JSONHandler()
+    private var semaphore = DispatchSemaphore(value: 0)
     private let logger = Logger()
     
     init(networkHandler: NetworkHandlable) {
@@ -23,6 +24,7 @@ final class HomeViewModel {
             guard let response = self?.jsonHandler.convertJSONToObject(from: data, to: HomeDataResponse.self) else { return }
             self?.displayName.value = response.displayName
             self?.mainEvent.value = response.mainEvent
+            self?.personalRecommendations.value = response.personalRecommendations
         }
     }
     
@@ -31,6 +33,21 @@ final class HomeViewModel {
             self?.eventImageData.value = data
         }
     }
+    
+    func loadRecommendationData(productIds: [String]) -> [Data] {
+        var list: [Data] = []
+        print(productIds)
+        productIds.forEach { [weak self] in
+            guard let requestBody = jsonHandler.convertObjectToJSON(from: ProductImageRequest(productCd: $0)) else { return }
+            self?.sendApiRequest(url: .productImage, method: .post, contentType: .urlEncoded, body: requestBody) { data in
+                list.append(data)
+                self?.semaphore.signal()
+            }
+            semaphore.wait()
+        }
+        return list
+    }
+    
     private func sendApiRequest(url: EndPoint, method: HttpMethod, contentType: ContentType, body: Data?, successHandler: @escaping (Data) -> Void) {
         networkHandler?.request(url: url, method: method, contentType: contentType, body: body) { [weak self] result in
             switch result {

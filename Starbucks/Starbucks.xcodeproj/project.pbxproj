@@ -28,6 +28,7 @@
 		B5891EA9282F5F54003F379D /* RecommendationCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891EA8282F5F54003F379D /* RecommendationCategory.swift */; };
 		B5891EAB282F70F5003F379D /* ProductInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891EAA282F70F5003F379D /* ProductInfoRequest.swift */; };
 		B5891EAD282F73A3003F379D /* ProductImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891EAC282F73A3003F379D /* ProductImageRequest.swift */; };
+		B5891EB028309BBB003F379D /* RecommendationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891EAF28309BBB003F379D /* RecommendationCollectionViewCell.swift */; };
 		B59B32C52829034200301A41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32C42829034200301A41 /* AppDelegate.swift */; };
 		B59B32C72829034200301A41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32C62829034200301A41 /* SceneDelegate.swift */; };
 		B59B32C92829034200301A41 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32C82829034200301A41 /* MainTabBarController.swift */; };
@@ -85,6 +86,7 @@
 		B5891EA8282F5F54003F379D /* RecommendationCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCategory.swift; sourceTree = "<group>"; };
 		B5891EAA282F70F5003F379D /* ProductInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoRequest.swift; sourceTree = "<group>"; };
 		B5891EAC282F73A3003F379D /* ProductImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageRequest.swift; sourceTree = "<group>"; };
+		B5891EAF28309BBB003F379D /* RecommendationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCollectionViewCell.swift; sourceTree = "<group>"; };
 		B59B32C12829034200301A41 /* Starbucks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Starbucks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59B32C42829034200301A41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59B32C62829034200301A41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -209,11 +211,20 @@
 		B5891EA7282F5F3D003F379D /* Recommendation */ = {
 			isa = PBXGroup;
 			children = (
+				B5891EAE28309B82003F379D /* Components */,
 				B5891EA3282DF2D2003F379D /* RecommendationViewController.swift */,
 				B5891EA5282DF9AC003F379D /* RecommendationViewModel.swift */,
 				B5891EA8282F5F54003F379D /* RecommendationCategory.swift */,
 			);
 			path = Recommendation;
+			sourceTree = "<group>";
+		};
+		B5891EAE28309B82003F379D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B5891EAF28309BBB003F379D /* RecommendationCollectionViewCell.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		B59B32B82829034200301A41 = {
@@ -546,6 +557,7 @@
 				B5891E95282BE291003F379D /* PersonalRecommendationTitleView.swift in Sources */,
 				B5891E9B282BE3E8003F379D /* HomeDataResponse.swift in Sources */,
 				B5891EA9282F5F54003F379D /* RecommendationCategory.swift in Sources */,
+				B5891EB028309BBB003F379D /* RecommendationCollectionViewCell.swift in Sources */,
 				B5E2BD9E283133C500BB7E2F /* ImageFileRequest.swift in Sources */,
 				B5891E92282BD084003F379D /* HomeHeaderView.swift in Sources */,
 				B5891E99282BE35B003F379D /* Recommendation.swift in Sources */,

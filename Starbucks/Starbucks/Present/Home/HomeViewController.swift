@@ -57,10 +57,6 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         homeScrollView.delegate = self
-        for category in RecommendationCategory.allCases {
-            let viewModel = RecommendationViewModel(networkHandler: NetworkHandler())
-            recommendationViewControllers[category] = RecommendationViewController(recommendationViewModel: viewModel, category: category)
-        }
         addViews()
         setLayout()
         bind()
@@ -96,6 +92,15 @@ final class HomeViewController: UIViewController {
         homeScrollView.addSubview(contentStackView)
         contentStackView.addArrangedSubview(mainEventImageView)
         contentStackView.addArrangedSubview(personalRecommendatilTitleView)
+        for category in RecommendationCategory.allCases {
+            let viewModel = RecommendationViewModel(networkHandler: NetworkHandler())
+            let viewController = RecommendationViewController(recommendationViewModel: viewModel, category: category)
+            recommendationViewControllers[category] = viewController
+            addChild(viewController)
+            viewController.didMove(toParent: self)
+            contentStackView.addArrangedSubview(viewController.view)
+        }
+
         contentStackView.addArrangedSubview(dummyView)
     }
     
@@ -123,6 +128,11 @@ final class HomeViewController: UIViewController {
         personalRecommendatilTitleView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         personalRecommendatilTitleView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         personalRecommendatilTitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        recommendationViewControllers[.personal]?.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        recommendationViewControllers[.personal]?.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        recommendationViewControllers[.personal]?.view.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        
         
         dummyView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor).isActive = true
         dummyView.heightAnchor.constraint(equalToConstant: 1500).isActive = true

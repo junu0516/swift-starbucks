@@ -8,9 +8,15 @@ final class RecommendationViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 130, height: 100)
+        layout.sectionInset = UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: 10)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.isScrollEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(RecommendationCollectionViewCell.self,
+                                forCellWithReuseIdentifier: RecommendationCollectionViewCell.identifier)
         return collectionView
     }()
     
@@ -18,8 +24,10 @@ final class RecommendationViewController: UIViewController {
         self.init()
         self.recommendationViewModel = recommendationViewModel
         self.category = category
-        //addViews()
-        //setLayout()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        addViews()
+        setLayout()
         bind()
     }
     
@@ -35,21 +43,32 @@ final class RecommendationViewController: UIViewController {
     }
     
     private func bind() {
-        recommendationViewModel?.recommendations.bind { recommendation in
+        recommendationViewModel?.recommendations.bind { [weak self] recommendation in
             if recommendation.count <= 0 { return }
-            //동기적으로 이미지 데이터 요청해서 뷰모델의 이미지 데이터 배열 업데이트
+            self?.recommendationViewModel?.loadProductImageData()
+        }
+        
+        recommendationViewModel?.productImageList.bind { [weak self] imageList in
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
         }
     }
 }
 
 extension RecommendationViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let recommendation = recommendationViewModel?.recommendations.value as? [Data] else { return 0 }
-        return recommendation.count
+        guard let imageList = recommendationViewModel?.productImageList.value as? [Data] else {
+            return 0
+        }
+        return imageList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        return UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendationCollectionViewCell.identifier, for: indexPath) as? RecommendationCollectionViewCell,
+              let imageData = recommendationViewModel?.productImageList.value[indexPath.row] else { return UICollectionViewCell() }
+        cell.updateProductImage(imageData: imageData)
+        return cell
     }
 }

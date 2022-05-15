@@ -26,6 +26,8 @@
 		B5891EA4282DF2D2003F379D /* RecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891EA3282DF2D2003F379D /* RecommendationViewController.swift */; };
 		B5891EA6282DF9AC003F379D /* RecommendationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891EA5282DF9AC003F379D /* RecommendationViewModel.swift */; };
 		B5891EA9282F5F54003F379D /* RecommendationCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891EA8282F5F54003F379D /* RecommendationCategory.swift */; };
+		B5891EAB282F70F5003F379D /* ProductInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891EAA282F70F5003F379D /* ProductInfoRequest.swift */; };
+		B5891EAD282F73A3003F379D /* ProductImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5891EAC282F73A3003F379D /* ProductImageRequest.swift */; };
 		B59B32C52829034200301A41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32C42829034200301A41 /* AppDelegate.swift */; };
 		B59B32C72829034200301A41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32C62829034200301A41 /* SceneDelegate.swift */; };
 		B59B32C92829034200301A41 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32C82829034200301A41 /* MainTabBarController.swift */; };
@@ -80,6 +82,8 @@
 		B5891EA3282DF2D2003F379D /* RecommendationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewController.swift; sourceTree = "<group>"; };
 		B5891EA5282DF9AC003F379D /* RecommendationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewModel.swift; sourceTree = "<group>"; };
 		B5891EA8282F5F54003F379D /* RecommendationCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCategory.swift; sourceTree = "<group>"; };
+		B5891EAA282F70F5003F379D /* ProductInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoRequest.swift; sourceTree = "<group>"; };
+		B5891EAC282F73A3003F379D /* ProductImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageRequest.swift; sourceTree = "<group>"; };
 		B59B32C12829034200301A41 /* Starbucks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Starbucks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59B32C42829034200301A41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59B32C62829034200301A41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 				B5891E98282BE35B003F379D /* Recommendation.swift */,
 				B5891E9A282BE3E8003F379D /* HomeDataResponse.swift */,
 				B5891E9D282BE425003F379D /* MainEvent.swift */,
+				B5891EAA282F70F5003F379D /* ProductInfoRequest.swift */,
+				B5891EAC282F73A3003F379D /* ProductImageRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -532,6 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5891E8D282AC474003F379D /* Observable.swift in Sources */,
+				B5891EAD282F73A3003F379D /* ProductImageRequest.swift in Sources */,
 				B5891E7A2829F625003F379D /* InitialEventViewController.swift in Sources */,
 				B5891E95282BE291003F379D /* PersonalRecommendationTitleView.swift in Sources */,
 				B5891E9B282BE3E8003F379D /* HomeDataResponse.swift in Sources */,
@@ -541,6 +548,7 @@
 				B5891E82282AAA82003F379D /* HomeViewModel.swift in Sources */,
 				B5891E8B282AC395003F379D /* InitialEventViewModel.swift in Sources */,
 				B59B32C92829034200301A41 /* MainTabBarController.swift in Sources */,
+				B5891EAB282F70F5003F379D /* ProductInfoRequest.swift in Sources */,
 				B59B32FA2829201600301A41 /* OrderViewController.swift in Sources */,
 				B5891E8F282B8E5B003F379D /* EndPoint.swift in Sources */,
 				B5891EA4282DF2D2003F379D /* RecommendationViewController.swift in Sources */,

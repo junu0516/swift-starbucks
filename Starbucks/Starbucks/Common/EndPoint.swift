@@ -7,6 +7,7 @@ enum EndPoint {
     case productInfo
     case productImage
     case productImageData(filePath: String, fileUrl: String)
+    case eventList
     
     var urlString: String {
         switch self {
@@ -22,6 +23,8 @@ enum EndPoint {
             return "https://www.starbucks.co.kr/menu/productFileAjax.do"
         case .productImageData(let filePath, let fileUrl):
             return "\(fileUrl)/\(filePath)"
+        case .eventList:
+            return "https://www.starbucks.co.kr/whats_new/getIngList.do"
             
         }
     }

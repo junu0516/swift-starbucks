@@ -40,6 +40,9 @@
 		B59B32F82829200400301A41 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32F72829200400301A41 /* HomeViewController.swift */; };
 		B59B32FA2829201600301A41 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B32F92829201600301A41 /* OrderViewController.swift */; };
 		B5E2BD9E283133C500BB7E2F /* ImageFileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E2BD9D283133C500BB7E2F /* ImageFileRequest.swift */; };
+		B5E2BDA02831F1E600BB7E2F /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E2BD9F2831F1E600BB7E2F /* Product.swift */; };
+		B5E2BDA22831FF7700BB7E2F /* ProductInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E2BDA12831FF7700BB7E2F /* ProductInfoResponse.swift */; };
+		B5E2BDA62832161800BB7E2F /* ProductGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E2BDA52832161800BB7E2F /* ProductGenerator.swift */; };
 		D0A815C252FEC3CFAA679630 /* Pods_Starbucks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 850174743D6574E43DA86A5A /* Pods_Starbucks.framework */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +105,9 @@
 		B59B32F72829200400301A41 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B59B32F92829201600301A41 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		B5E2BD9D283133C500BB7E2F /* ImageFileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileRequest.swift; sourceTree = "<group>"; };
+		B5E2BD9F2831F1E600BB7E2F /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		B5E2BDA12831FF7700BB7E2F /* ProductInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoResponse.swift; sourceTree = "<group>"; };
+		B5E2BDA52832161800BB7E2F /* ProductGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGenerator.swift; sourceTree = "<group>"; };
 		E4E7C487AAAC5E17AC46EA99 /* Pods-Starbucks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Starbucks.release.xcconfig"; path = "Target Support Files/Pods-Starbucks/Pods-Starbucks.release.xcconfig"; sourceTree = "<group>"; };
 		F064E155873A1C6C4317A5C8 /* Pods-Starbucks-StarbucksUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Starbucks-StarbucksUITests.release.xcconfig"; path = "Target Support Files/Pods-Starbucks-StarbucksUITests/Pods-Starbucks-StarbucksUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F97FD557F08B4CD36441316A /* Pods_StarbucksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarbucksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,8 +208,11 @@
 				B5891E9A282BE3E8003F379D /* HomeDataResponse.swift */,
 				B5891E9D282BE425003F379D /* MainEvent.swift */,
 				B5891EAA282F70F5003F379D /* ProductInfoRequest.swift */,
+				B5E2BDA12831FF7700BB7E2F /* ProductInfoResponse.swift */,
 				B5891EAC282F73A3003F379D /* ProductImageRequest.swift */,
 				B5E2BD9D283133C500BB7E2F /* ImageFileRequest.swift */,
+				B5E2BD9F2831F1E600BB7E2F /* Product.swift */,
+				B5E2BDA52832161800BB7E2F /* ProductGenerator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -571,6 +580,9 @@
 				B5891EA0282CCB2E003F379D /* JSONHandlable.swift in Sources */,
 				B5891E9E282BE425003F379D /* MainEvent.swift in Sources */,
 				B59B32C52829034200301A41 /* AppDelegate.swift in Sources */,
+				B5E2BDA22831FF7700BB7E2F /* ProductInfoResponse.swift in Sources */,
+				B5E2BDA02831F1E600BB7E2F /* Product.swift in Sources */,
+				B5E2BDA62832161800BB7E2F /* ProductGenerator.swift in Sources */,
 				B5891EA2282CCB40003F379D /* JSONHandler.swift in Sources */,
 				B59B32C72829034200301A41 /* SceneDelegate.swift in Sources */,
 				B59B32F82829200400301A41 /* HomeViewController.swift in Sources */,

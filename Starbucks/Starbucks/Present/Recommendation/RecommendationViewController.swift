@@ -45,7 +45,7 @@ final class RecommendationViewController: UIViewController {
     private func bind() {
         recommendationViewModel?.recommendations.bind { [weak self] recommendation in
             if recommendation.count <= 0 { return }
-            self?.recommendationViewModel?.loadProductImageData()
+            self?.recommendationViewModel?.loadProductData()
         }
         
         recommendationViewModel?.productList.bind { [weak self] imageList in
@@ -59,16 +59,16 @@ final class RecommendationViewController: UIViewController {
 extension RecommendationViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let imageList = recommendationViewModel?.productImageList.value as? [Data] else {
-            return 0
-        }
-        return imageList.count
+        guard let productList = recommendationViewModel?.productList.value as? [Product] else { return 0 }
+        return productList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendationCollectionViewCell.identifier, for: indexPath) as? RecommendationCollectionViewCell,
-              let imageData = recommendationViewModel?.productImageList.value[indexPath.row] else { return UICollectionViewCell() }
-        cell.updateProductImage(imageData: imageData)
+              let product = recommendationViewModel?.productList.value[indexPath.row] else { return UICollectionViewCell() }
+ 
+        cell.updateProductImage(imageData: product.productImage)
+        cell.updateProductName(productName: product.productName)
         return cell
     }
 }

@@ -3,8 +3,8 @@ import OSLog
 
 final class RecommendationViewModel {
     
-    private (set) var recommendations = Observable<[Data]>([])
-    private (set) var productImageList = Observable<[Data]>([])
+    private (set) var recommendations = Observable<[String:ProductGenerator]>([:])
+    private (set) var productList = Observable<[Product]>([])
     
     private let logger = Logger()
     private let jsonHandler: JSONHandlable = JSONHandler()
@@ -16,21 +16,23 @@ final class RecommendationViewModel {
         self.networkHandler = networkHandler
     }
     
-    func loadProductImageData() {
-        var imageDataList: [Data] = []
+    func loadProductData() {
+        var productList: [Product] = []
         let requestDataList = recommendations.value
-        requestDataList.forEach { [weak self] in
-            guard let requestDataList = self?.jsonHandler.convertJSONToObject(from: $0, to: ImageFileRequestList.self) else { return }
+        for (productId, productGenerator) in requestDataList {
+            guard let requestDataList = jsonHandler.convertJSONToObject(from: productGenerator.productImageRequestData, to: ImageFileRequestList.self) else { return }
             if requestDataList.file.count <= 0 { return }
             let requestData = requestDataList.file[0]
             let url = EndPoint.productImageData(filePath: requestData.filePath, fileUrl: requestData.fileUrl)
-            self?.sendApiRequest(url: url, method: .get, contentType: .image, body: nil) { data in
-                imageDataList.append(data)
+            sendApiRequest(url: url, method: .get, contentType: .image, body: nil) { [weak self] data in
+                let product = Product(productId: productId, productImage: data, productName: productGenerator.productInfo.productName)
+                productList.append(product)
                 self?.semaphore.signal()
             }
             semaphore.wait()
         }
-        productImageList.value = imageDataList
+        
+        self.productList.value = productList
     }
     
     private func sendApiRequest(url: EndPoint, method: HttpMethod, contentType: ContentType, body: Data?, successHandler: @escaping (Data) -> Void) {

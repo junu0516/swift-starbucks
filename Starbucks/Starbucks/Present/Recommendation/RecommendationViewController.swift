@@ -8,7 +8,7 @@ final class RecommendationViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 130, height: 100)
+        layout.itemSize = CGSize(width: 130, height: 150)
         layout.sectionInset = UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: 10)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -48,7 +48,7 @@ final class RecommendationViewController: UIViewController {
             self?.recommendationViewModel?.loadProductImageData()
         }
         
-        recommendationViewModel?.productImageList.bind { [weak self] imageList in
+        recommendationViewModel?.productList.bind { [weak self] imageList in
             DispatchQueue.main.async {
                 self?.collectionView.reloadData()
             }

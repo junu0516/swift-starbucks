@@ -131,7 +131,7 @@ final class HomeViewController: UIViewController {
         
         recommendationViewControllers[.personal]?.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         recommendationViewControllers[.personal]?.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        recommendationViewControllers[.personal]?.view.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        recommendationViewControllers[.personal]?.view.heightAnchor.constraint(equalToConstant: 170).isActive = true
         
         
         dummyView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor).isActive = true

@@ -1,7 +1,7 @@
 import Foundation
 
 struct EventInfoResponseEntityList: Decodable {
-    private let list: [EventInfoResponseEntity]
+    private (set) var list: [EventInfoResponseEntity]
 }
 
 struct EventInfoResponseEntity: Decodable {

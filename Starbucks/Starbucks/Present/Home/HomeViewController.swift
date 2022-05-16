@@ -49,6 +49,7 @@ final class HomeViewController: UIViewController {
         return eventListTitleView
     }()
     
+    
     private lazy var dummyView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -99,15 +100,29 @@ final class HomeViewController: UIViewController {
         contentStackView.addArrangedSubview(mainEventImageView)
         contentStackView.addArrangedSubview(personalRecommendatilTitleView)
         for category in RecommendationCategory.allCases {
+            addRecommendationViewController(category: category)
+        }
+        addEventListViewController()
+        contentStackView.addArrangedSubview(eventListTitleView)
+        contentStackView.addArrangedSubview(dummyView)
+        
+        func addRecommendationViewController(category: RecommendationCategory) {
             let viewModel = RecommendationViewModel(networkHandler: NetworkHandler())
             let viewController = RecommendationViewController(recommendationViewModel: viewModel, category: category)
             recommendationViewControllers[category] = viewController
             addChild(viewController)
             viewController.didMove(toParent: self)
             contentStackView.addArrangedSubview(viewController.view)
+
         }
-        contentStackView.addArrangedSubview(eventListTitleView)
-        contentStackView.addArrangedSubview(dummyView)
+        
+        func addEventListViewController() {
+            let viewModel = EventListViewModel(networkHandler: NetworkHandler())
+            let viewController = EventListViewController(eventListViewModel: viewModel)
+            addChild(viewController)
+            viewController.didMove(toParent: self)
+            contentStackView.addArrangedSubview(viewController.view)
+        }
     }
     
     private func setLayout() {

@@ -3,7 +3,7 @@ import OSLog
 
 final class HomeViewModel {
     
-    private (set) var mainEvent = Observable<MainEventDataRequestEntity>(MainEventDataRequestEntity())
+    private (set) var mainEvent = Observable<EventImageRequestEntity>(EventImageRequestEntity())
     private (set) var eventImageData = Observable<Data>(Data())
     private (set) var displayName = Observable<String>("USER NAME")
     private (set) var personalRecommendations = Observable<RecommendedProductIdListEntity>(RecommendedProductIdListEntity())

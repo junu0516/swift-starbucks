@@ -1,6 +1,6 @@
 import Foundation
 
-struct MainEventDataRequestEntity: Codable {
+struct EventImageRequestEntity: Codable {
     private (set) var imageUrl: String = ""
     private (set) var imageFileName: String = ""
     
@@ -15,5 +15,10 @@ struct MainEventDataRequestEntity: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         imageUrl = try container.decode(String.self, forKey: .imageUrl)
         imageFileName = try container.decode(String.self, forKey: .imageFileName)
+    }
+    
+    init(imageUrl: String, imageFileName: String) {
+        self.imageUrl = imageUrl
+        self.imageFileName = imageFileName
     }
 }

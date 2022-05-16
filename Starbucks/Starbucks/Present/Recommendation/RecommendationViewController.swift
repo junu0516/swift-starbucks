@@ -8,7 +8,7 @@ final class RecommendationViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 130, height: 150)
+        layout.itemSize = CGSize(width: 120, height: 145)
         layout.sectionInset = UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: 20)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)

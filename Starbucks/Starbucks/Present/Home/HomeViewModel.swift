@@ -34,17 +34,32 @@ final class HomeViewModel {
         }
     }
     
-    func loadRecommendationData(productIds: [String]) -> [Data] {
-        var list: [Data] = []
-        productIds.forEach { [weak self] in
-            guard let requestBody = jsonHandler.convertObjectToJSON(from: ProductImageRequest(productCd: $0)) else { return }
-            self?.sendApiRequest(url: .productImage, method: .post, contentType: .urlEncoded, body: requestBody) { data in
-                list.append(data)
+    func loadRecommendationData(productIds: [String]) -> [String:ProductGenerator] {
+        var productDataMap: [String:ProductGenerator] = [:]
+        for productId in productIds {
+            
+            guard let requestBody = jsonHandler.convertObjectToJSON(from: ProductImageRequest(productCd: productId)) else { continue }
+            var productImageRequestData: Data = Data()
+            self.sendApiRequest(url: .productImage, method: .post, contentType: .urlEncoded, body: requestBody) { [weak self] data in
+                productImageRequestData = data
+                self?.semaphore.signal()
+            }
+            semaphore.wait()
+
+            guard let requestBody = jsonHandler.convertObjectToJSON(from: ProductInfoRequest(productCd: productId)) else { continue }
+            self.sendApiRequest(url: .productInfo, method: .post, contentType: .urlEncoded, body: requestBody) { [weak self] data in
+                guard let productInfoResponse = self?.jsonHandler.convertJSONToObject(from: data, to: ProductInfoResponse.self) else {
+                    self?.semaphore.signal()
+                    return
+                }
+                let productGenerator = ProductGenerator(productImageRequestData: productImageRequestData, productInfo: productInfoResponse)
+                productDataMap[productId] = productGenerator
                 self?.semaphore.signal()
             }
             semaphore.wait()
         }
-        return list
+
+        return productDataMap
     }
     
     private func sendApiRequest(url: EndPoint, method: HttpMethod, contentType: ContentType, body: Data?, successHandler: @escaping (Data) -> Void) {
@@ -53,6 +68,7 @@ final class HomeViewModel {
             case .success(let data):
                 successHandler(data)
             case .failure(let error):
+                self?.semaphore.signal()
                 self?.logger.error("\(error.localizedDescription)")
             }
         }

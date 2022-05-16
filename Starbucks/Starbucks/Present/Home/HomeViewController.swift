@@ -43,6 +43,12 @@ final class HomeViewController: UIViewController {
         return recommendationView
     }()
     
+    private lazy var eventListTitleView: EventListTitleView = {
+        let eventListTitleView = EventListTitleView()
+        eventListTitleView.translatesAutoresizingMaskIntoConstraints = false
+        return eventListTitleView
+    }()
+    
     private lazy var dummyView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -100,7 +106,7 @@ final class HomeViewController: UIViewController {
             viewController.didMove(toParent: self)
             contentStackView.addArrangedSubview(viewController.view)
         }
-
+        contentStackView.addArrangedSubview(eventListTitleView)
         contentStackView.addArrangedSubview(dummyView)
     }
     
@@ -131,8 +137,10 @@ final class HomeViewController: UIViewController {
         
         recommendationViewControllers[.personal]?.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         recommendationViewControllers[.personal]?.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        recommendationViewControllers[.personal]?.view.heightAnchor.constraint(equalToConstant: 170).isActive = true
+        recommendationViewControllers[.personal]?.view.heightAnchor.constraint(equalToConstant: 160).isActive = true
         
+        eventListTitleView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor).isActive = true
+        eventListTitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         dummyView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor).isActive = true
         dummyView.heightAnchor.constraint(equalToConstant: 1500).isActive = true

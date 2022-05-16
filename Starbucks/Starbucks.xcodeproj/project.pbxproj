@@ -43,6 +43,7 @@
 		B5E2BDA02831F1E600BB7E2F /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E2BD9F2831F1E600BB7E2F /* Product.swift */; };
 		B5E2BDA22831FF7700BB7E2F /* ProductInfoResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E2BDA12831FF7700BB7E2F /* ProductInfoResponseEntity.swift */; };
 		B5E2BDA62832161800BB7E2F /* ProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E2BDA52832161800BB7E2F /* ProductEntity.swift */; };
+		B5E2BDAA2832521600BB7E2F /* EventInfoRequestEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E2BDA92832521600BB7E2F /* EventInfoRequestEntity.swift */; };
 		B5E2BDAC2832533300BB7E2F /* EventListTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E2BDAB2832533300BB7E2F /* EventListTitleView.swift */; };
 		D0A815C252FEC3CFAA679630 /* Pods_Starbucks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 850174743D6574E43DA86A5A /* Pods_Starbucks.framework */; };
 /* End PBXBuildFile section */
@@ -109,6 +110,7 @@
 		B5E2BD9F2831F1E600BB7E2F /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		B5E2BDA12831FF7700BB7E2F /* ProductInfoResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoResponseEntity.swift; sourceTree = "<group>"; };
 		B5E2BDA52832161800BB7E2F /* ProductEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEntity.swift; sourceTree = "<group>"; };
+		B5E2BDA92832521600BB7E2F /* EventInfoRequestEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoRequestEntity.swift; sourceTree = "<group>"; };
 		B5E2BDAB2832533300BB7E2F /* EventListTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListTitleView.swift; sourceTree = "<group>"; };
 		E4E7C487AAAC5E17AC46EA99 /* Pods-Starbucks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Starbucks.release.xcconfig"; path = "Target Support Files/Pods-Starbucks/Pods-Starbucks.release.xcconfig"; sourceTree = "<group>"; };
 		F064E155873A1C6C4317A5C8 /* Pods-Starbucks-StarbucksUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Starbucks-StarbucksUITests.release.xcconfig"; path = "Target Support Files/Pods-Starbucks-StarbucksUITests/Pods-Starbucks-StarbucksUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				B5891EAC282F73A3003F379D /* ProductImageRequestEntity.swift */,
 				B5E2BD9D283133C500BB7E2F /* ImageFileRequestEntity.swift */,
 				B5E2BDA52832161800BB7E2F /* ProductEntity.swift */,
+				B5E2BDA92832521600BB7E2F /* EventInfoRequestEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				B5891EA4282DF2D2003F379D /* RecommendationViewController.swift in Sources */,
 				B5891EA0282CCB2E003F379D /* JSONHandlable.swift in Sources */,
 				B5891E9E282BE425003F379D /* MainEventDataRequestEntity.swift in Sources */,
+				B5E2BDAA2832521600BB7E2F /* EventInfoRequestEntity.swift in Sources */,
 				B59B32C52829034200301A41 /* AppDelegate.swift in Sources */,
 				B5E2BDA22831FF7700BB7E2F /* ProductInfoResponseEntity.swift in Sources */,
 				B5E2BDA02831F1E600BB7E2F /* Product.swift in Sources */,

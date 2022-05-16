@@ -24,6 +24,7 @@ final class RecommendationViewModel {
             if requestDataList.file.count <= 0 { return }
             let requestData = requestDataList.file[0]
             let url = EndPoint.productImageData(filePath: requestData.filePath, fileUrl: requestData.fileUrl)
+            
             sendApiRequest(url: url, method: .get, contentType: .image, body: nil) { [weak self] data in
                 let product = Product(productId: productId, productImage: data, productName: productGenerator.productInfo.productName)
                 productList.append(product)

@@ -3,7 +3,7 @@ import Foundation
 struct HomeDataResponse: Codable {
     private (set) var displayName: String
     private (set) var personalRecommendations: RecommendedProductIdListEntity
-    private (set) var mainEvent: MainEvent
+    private (set) var mainEvent: MainEventDataRequestEntity
     private (set) var timeRecommendations: RecommendedProductIdListEntity
     
     enum CodingKeys: String, CodingKey {
@@ -18,6 +18,6 @@ struct HomeDataResponse: Codable {
         displayName = (try? container.decode(String.self, forKey: .displayName)) ?? ""
         personalRecommendations = (try? container.decode(RecommendedProductIdListEntity.self, forKey: .personalRecommendations)) ?? RecommendedProductIdListEntity()
         timeRecommendations = (try? container.decode(RecommendedProductIdListEntity.self, forKey: .timeRecommendations)) ?? RecommendedProductIdListEntity()
-        mainEvent = try container.decode(MainEvent.self, forKey: .mainEvent)
+        mainEvent = try container.decode(MainEventDataRequestEntity.self, forKey: .mainEvent)
     }
 }

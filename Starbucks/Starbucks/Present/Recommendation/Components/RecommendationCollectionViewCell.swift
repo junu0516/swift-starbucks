@@ -18,6 +18,8 @@ final class RecommendationCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12)
         label.text = "상품 이름"
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 2
         return label
     }()
     

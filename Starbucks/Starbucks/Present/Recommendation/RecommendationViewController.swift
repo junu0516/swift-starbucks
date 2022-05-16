@@ -9,7 +9,7 @@ final class RecommendationViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 130, height: 150)
-        layout.sectionInset = UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: 20)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isScrollEnabled = true

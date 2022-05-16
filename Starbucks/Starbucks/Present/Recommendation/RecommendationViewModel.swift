@@ -3,7 +3,7 @@ import OSLog
 
 final class RecommendationViewModel {
     
-    private (set) var recommendations = Observable<[String:ProductGenerator]>([:])
+    private (set) var recommendations = Observable<[String:ProductEntity]>([:])
     private (set) var productList = Observable<[Product]>([])
     
     private let logger = Logger()

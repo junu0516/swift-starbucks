@@ -1,6 +1,6 @@
 import Foundation
 
-struct MainEvent: Codable {
+struct MainEventDataRequestEntity: Codable {
     private (set) var imageUrl: String = ""
     private (set) var imageFileName: String = ""
     

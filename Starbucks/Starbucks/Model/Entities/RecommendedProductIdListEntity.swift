@@ -1,6 +1,6 @@
 import Foundation
 
-struct Recommendation: Codable {
+struct RecommendedProductIdListEntity: Codable {
     let products: [String]
     
     init() {

@@ -1,10 +1,10 @@
 import Foundation
 
 struct ImageFileRequestList: Codable {
-    private (set) var file: [ImageFileRequest]
+    private (set) var file: [ImageFileRequestEntity]
 }
 
-struct ImageFileRequest: Codable {
+struct ImageFileRequestEntity: Codable {
     private (set) var filePath: String
     private (set) var fileUrl: String
     

@@ -3,11 +3,11 @@ import OSLog
 
 final class HomeViewModel {
     
-    private (set) var mainEvent = Observable<MainEvent>(MainEvent())
+    private (set) var mainEvent = Observable<MainEventDataRequestEntity>(MainEventDataRequestEntity())
     private (set) var eventImageData = Observable<Data>(Data())
     private (set) var displayName = Observable<String>("USER NAME")
-    private (set) var personalRecommendations = Observable<Recommendation>(Recommendation())
-    private (set) var timeRecommendations = Observable<Recommendation>(Recommendation())
+    private (set) var personalRecommendations = Observable<RecommendedProductIdListEntity>(RecommendedProductIdListEntity())
+    private (set) var timeRecommendations = Observable<RecommendedProductIdListEntity>(RecommendedProductIdListEntity())
 
     private var networkHandler: NetworkHandlable?
     private var jsonHandler: JSONHandlable = JSONHandler()
@@ -34,11 +34,11 @@ final class HomeViewModel {
         }
     }
     
-    func loadRecommendationData(productIds: [String]) -> [String:ProductGenerator] {
-        var productDataMap: [String:ProductGenerator] = [:]
+    func loadRecommendationData(productIds: [String]) -> [String:ProductEntity] {
+        var productDataMap: [String:ProductEntity] = [:]
         for productId in productIds {
             
-            guard let requestBody = jsonHandler.convertObjectToJSON(from: ProductImageRequest(productCd: productId)) else { continue }
+            guard let requestBody = jsonHandler.convertObjectToJSON(from: ProductImageRequestEntity(productCd: productId)) else { continue }
             var productImageRequestData: Data = Data()
             self.sendApiRequest(url: .productImage, method: .post, contentType: .urlEncoded, body: requestBody) { [weak self] data in
                 productImageRequestData = data
@@ -46,13 +46,13 @@ final class HomeViewModel {
             }
             semaphore.wait()
 
-            guard let requestBody = jsonHandler.convertObjectToJSON(from: ProductInfoRequest(productCd: productId)) else { continue }
+            guard let requestBody = jsonHandler.convertObjectToJSON(from: ProductInfoRequestEntity(productCd: productId)) else { continue }
             self.sendApiRequest(url: .productInfo, method: .post, contentType: .urlEncoded, body: requestBody) { [weak self] data in
-                guard let productInfoResponse = self?.jsonHandler.convertJSONToObject(from: data, to: ProductInfoResponse.self) else {
+                guard let productInfoResponse = self?.jsonHandler.convertJSONToObject(from: data, to: ProductInfoResponseEntity.self) else {
                     self?.semaphore.signal()
                     return
                 }
-                let productGenerator = ProductGenerator(productImageRequestData: productImageRequestData, productInfo: productInfoResponse)
+                let productGenerator = ProductEntity(productImageRequestData: productImageRequestData, productInfo: productInfoResponse)
                 productDataMap[productId] = productGenerator
                 self?.semaphore.signal()
             }

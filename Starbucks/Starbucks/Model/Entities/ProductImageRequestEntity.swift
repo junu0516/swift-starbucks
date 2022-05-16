@@ -1,6 +1,6 @@
 import Foundation
 
-struct ProductImageRequest: Codable {
+struct ProductImageRequestEntity: Codable {
     let productCd: String
     
     enum CodingKeys: String, CodingKey {

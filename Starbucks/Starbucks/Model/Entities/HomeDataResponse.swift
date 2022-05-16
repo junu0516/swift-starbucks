@@ -2,9 +2,9 @@ import Foundation
 
 struct HomeDataResponse: Codable {
     private (set) var displayName: String
-    private (set) var personalRecommendations: Recommendation
+    private (set) var personalRecommendations: RecommendedProductIdListEntity
     private (set) var mainEvent: MainEvent
-    private (set) var timeRecommendations: Recommendation
+    private (set) var timeRecommendations: RecommendedProductIdListEntity
     
     enum CodingKeys: String, CodingKey {
         case displayName = "display-name"
@@ -16,8 +16,8 @@ struct HomeDataResponse: Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         displayName = (try? container.decode(String.self, forKey: .displayName)) ?? ""
-        personalRecommendations = (try? container.decode(Recommendation.self, forKey: .personalRecommendations)) ?? Recommendation()
-        timeRecommendations = (try? container.decode(Recommendation.self, forKey: .timeRecommendations)) ?? Recommendation()
+        personalRecommendations = (try? container.decode(RecommendedProductIdListEntity.self, forKey: .personalRecommendations)) ?? RecommendedProductIdListEntity()
+        timeRecommendations = (try? container.decode(RecommendedProductIdListEntity.self, forKey: .timeRecommendations)) ?? RecommendedProductIdListEntity()
         mainEvent = try container.decode(MainEvent.self, forKey: .mainEvent)
     }
 }

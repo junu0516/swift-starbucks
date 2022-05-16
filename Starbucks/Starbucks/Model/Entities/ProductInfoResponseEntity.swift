@@ -1,6 +1,6 @@
 import Foundation
 
-struct ProductInfoResponse: Decodable {
+struct ProductInfoResponseEntity: Decodable {
     private (set) var content: String
     private (set) var productName: String
     private (set) var recommend: String

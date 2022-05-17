@@ -4,6 +4,7 @@ final class HomeViewController: UIViewController {
     
     private var homeViewModel: HomeViewModel?
     private var recommendationViewControllers: [RecommendationCategory: RecommendationViewController] = [:]
+    private var eventListViewController: EventListViewController?
     
     private lazy var homeHeaderView: HomeHeaderView = {
         let headerView = HomeHeaderView()
@@ -102,8 +103,8 @@ final class HomeViewController: UIViewController {
         for category in RecommendationCategory.allCases {
             addRecommendationViewController(category: category)
         }
-        addEventListViewController()
         contentStackView.addArrangedSubview(eventListTitleView)
+        addEventListViewController()
         contentStackView.addArrangedSubview(dummyView)
         
         func addRecommendationViewController(category: RecommendationCategory) {
@@ -121,6 +122,7 @@ final class HomeViewController: UIViewController {
             let viewController = EventListViewController(eventListViewModel: viewModel)
             addChild(viewController)
             viewController.didMove(toParent: self)
+            eventListViewController = viewController
             contentStackView.addArrangedSubview(viewController.view)
         }
     }
@@ -153,6 +155,10 @@ final class HomeViewController: UIViewController {
         recommendationViewControllers[.personal]?.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         recommendationViewControllers[.personal]?.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         recommendationViewControllers[.personal]?.view.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        
+        eventListViewController?.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        eventListViewController?.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        eventListViewController?.view.heightAnchor.constraint(equalToConstant: 160).isActive = true
         
         eventListTitleView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor).isActive = true
         eventListTitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true

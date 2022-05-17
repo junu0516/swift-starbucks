@@ -4,7 +4,7 @@ final class EventListViewController: UIViewController {
     
     private var eventListViewModel: EventListViewModel?
     
-    private lazy var collectionView: UICollectionView = {
+    private lazy var eventListCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 150, height: 150)
@@ -23,23 +23,46 @@ final class EventListViewController: UIViewController {
         self.init()
         self.eventListViewModel = eventListViewModel
         addViews()
+        setLayout()
         bind()
+        eventListCollectionView.dataSource = self
+        eventListCollectionView.delegate = self
     }
     
     private func addViews() {
-        view.addSubview(collectionView)
+        view.addSubview(eventListCollectionView)
     }
     
     private func setLayout() {
-        collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        eventListCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        eventListCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        eventListCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        eventListCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
     private func bind() {
-        self.eventListViewModel?.eventInfoList.bind { _ in
-            //DTO List 가지고 UI 업데이트하는 로직 실행
+        self.eventListViewModel?.eventInfoList.bind { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.eventListCollectionView.reloadData()
+            }
         }
     }
+}
+
+extension EventListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let eventList = eventListViewModel?.eventInfoList.value as? [EventInfo] else { return 0 }
+        return eventList.count
+    } 
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EventListCollectionViewCell.identifier, for: indexPath) as? EventListCollectionViewCell else { return UICollectionViewCell() }
+        guard let eventInfo = eventListViewModel?.eventInfoList.value[indexPath.row] else { return UICollectionViewCell() }
+        cell.updateEventImage(eventImage: eventInfo.eventImage)
+        cell.updateEventTitle(eventTitle: eventInfo.eventTitle)
+        cell.updateEventSubTitle(eventSubTitle: eventInfo.eventSubTitle)
+        return cell
+    }
+    
 }

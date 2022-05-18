@@ -116,7 +116,7 @@ final class HomeViewController: UIViewController {
         addRecommendationViewController(category: .time)
         
         func addRecommendationViewController(category: RecommendationCategory) {
-            let viewModel = RecommendationViewModel(networkHandler: NetworkHandler())
+            let viewModel = RecommendationViewModel(networkHandler: NetworkHandler(), jsonHandler: JSONHandler())
             let viewController = RecommendationViewController(recommendationViewModel: viewModel, category: category)
             recommendationViewControllers[category] = viewController
             addChild(viewController)
@@ -126,7 +126,7 @@ final class HomeViewController: UIViewController {
         }
         
         func addEventListViewController() {
-            let viewModel = EventListViewModel(networkHandler: NetworkHandler())
+            let viewModel = EventListViewModel(networkHandler: NetworkHandler(), jsonHandler: JSONHandler())
             let viewController = EventListViewController(eventListViewModel: viewModel)
             addChild(viewController)
             viewController.didMove(toParent: self)

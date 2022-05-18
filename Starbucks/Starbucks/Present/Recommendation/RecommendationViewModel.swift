@@ -7,13 +7,14 @@ final class RecommendationViewModel {
     private (set) var productList = Observable<[Product]>([])
     
     private let logger = Logger()
-    private let jsonHandler: JSONHandlable = JSONHandler()
-    private var networkHandler: NetworkHandlable?
+    private let jsonHandler: JSONHandlable
+    private let networkHandler: NetworkHandlable?
     private var semaphore = DispatchSemaphore(value: 0)
 
 
-    init(networkHandler: NetworkHandlable) {
+    init(networkHandler: NetworkHandlable, jsonHandler: JSONHandlable) {
         self.networkHandler = networkHandler
+        self.jsonHandler = jsonHandler
     }
     
     func loadProductData() {

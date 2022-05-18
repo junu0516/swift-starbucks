@@ -6,11 +6,12 @@ final class EventListViewModel {
     private (set) var eventInfoList = Observable<[EventInfo]>([])
     
     private let networkHandler: NetworkHandlable
-    private let jsonHandler: JSONHandlable = JSONHandler()
+    private let jsonHandler: JSONHandlable
     private let logger = Logger()
     
-    init(networkHandler: NetworkHandlable) {
+    init(networkHandler: NetworkHandlable, jsonHandler: JSONHandlable) {
         self.networkHandler = networkHandler
+        self.jsonHandler = jsonHandler
         loadEventInfoListData()
     }
     

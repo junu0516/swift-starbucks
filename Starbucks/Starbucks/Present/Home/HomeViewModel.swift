@@ -9,13 +9,14 @@ final class HomeViewModel {
     private (set) var personalRecommendations = Observable<RecommendedProductIdListEntity>(RecommendedProductIdListEntity())
     private (set) var timeRecommendations = Observable<RecommendedProductIdListEntity>(RecommendedProductIdListEntity())
 
-    private var networkHandler: NetworkHandlable?
-    private var jsonHandler: JSONHandlable = JSONHandler()
+    private let networkHandler: NetworkHandlable
+    private let jsonHandler: JSONHandlable
     private var semaphore = DispatchSemaphore(value: 0)
     private let logger = Logger()
     
-    init(networkHandler: NetworkHandlable) {
+    init(networkHandler: NetworkHandlable, jsonHandler: JSONHandlable) {
         self.networkHandler = networkHandler
+        self.jsonHandler = jsonHandler
         loadUserData()
     }
     
@@ -64,7 +65,7 @@ final class HomeViewModel {
     }
     
     private func sendApiRequest(url: EndPoint, method: HttpMethod, contentType: ContentType, body: Data?, successHandler: @escaping (Data) -> Void) {
-        networkHandler?.request(url: url, method: method, contentType: contentType, body: body) { [weak self] result in
+        networkHandler.request(url: url, method: method, contentType: contentType, body: body) { [weak self] result in
             switch result {
             case .success(let data):
                 successHandler(data)

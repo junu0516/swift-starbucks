@@ -17,9 +17,12 @@ final class RecommendationViewModel {
     }
     
     func loadProductData() {
+        let dispatchGroup = DispatchGroup()
         var productList: [Product] = []
         let requestDataList = recommendations.value
         for (productId, productGenerator) in requestDataList {
+            dispatchGroup.enter()
+            
             guard let requestDataList = jsonHandler.convertJSONToObject(from: productGenerator.productImageRequestData, to: ImageFileRequestList.self) else { return }
             if requestDataList.file.count <= 0 { return }
             let requestData = requestDataList.file[0]
@@ -28,12 +31,14 @@ final class RecommendationViewModel {
             sendApiRequest(url: url, method: .get, contentType: .image, body: nil) { [weak self] data in
                 let product = Product(productId: productId, productImage: data, productName: productGenerator.productInfo.productName)
                 productList.append(product)
-                self?.semaphore.signal()
+                
+                dispatchGroup.leave()
             }
-            semaphore.wait()
         }
         
-        self.productList.value = productList
+        dispatchGroup.notify(queue: .main) {
+            self.productList.value = productList
+        }
     }
     
     private func sendApiRequest(url: EndPoint, method: HttpMethod, contentType: ContentType, body: Data?, successHandler: @escaping (Data) -> Void) {

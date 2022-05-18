@@ -50,7 +50,6 @@ final class HomeViewController: UIViewController {
         return eventListTitleView
     }()
     
-    
     private lazy var dummyView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -100,9 +99,8 @@ final class HomeViewController: UIViewController {
         homeScrollView.addSubview(contentStackView)
         contentStackView.addArrangedSubview(mainEventImageView)
         contentStackView.addArrangedSubview(personalRecommendatilTitleView)
-        for category in RecommendationCategory.allCases {
-            addRecommendationViewController(category: category)
-        }
+        
+        addRecommendationViewController(category: .personal)
         contentStackView.addArrangedSubview(eventListTitleView)
         addEventListViewController()
         contentStackView.addArrangedSubview(dummyView)

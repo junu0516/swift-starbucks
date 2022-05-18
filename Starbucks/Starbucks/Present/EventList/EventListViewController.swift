@@ -7,8 +7,8 @@ final class EventListViewController: UIViewController {
     private lazy var eventListCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 150, height: 150)
-        layout.sectionInset = UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: 20)
+        layout.itemSize = CGSize(width: 200, height: 180)
+        layout.sectionInset = UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: 30)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isScrollEnabled = true
@@ -49,7 +49,7 @@ final class EventListViewController: UIViewController {
     }
 }
 
-extension EventListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension EventListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let eventList = eventListViewModel?.eventInfoList.value as? [EventInfo] else { return 0 }
@@ -63,6 +63,10 @@ extension EventListViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.updateEventTitle(eventTitle: eventInfo.eventTitle)
         cell.updateEventSubTitle(eventSubTitle: eventInfo.eventSubTitle)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 200, height: 180)
     }
     
 }

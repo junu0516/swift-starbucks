@@ -8,6 +8,7 @@ final class EventListCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -15,7 +16,7 @@ final class EventListCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 13)
+        label.font = UIFont.systemFont(ofSize: 15)
         label.text = ""
         return label
     }()
@@ -25,6 +26,7 @@ final class EventListCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 13)
+        label.textColor = .systemGray
         label.text = ""
         return label
     }()
@@ -54,6 +56,7 @@ final class EventListCollectionViewCell: UICollectionViewCell {
         eventTitleLabel.topAnchor.constraint(equalTo: eventImageView.bottomAnchor).isActive = true
         eventTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         eventTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        eventTitleLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.125).isActive = true
         
         eventSubTitleLabel.topAnchor.constraint(equalTo: eventTitleLabel.bottomAnchor).isActive = true
         eventSubTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true

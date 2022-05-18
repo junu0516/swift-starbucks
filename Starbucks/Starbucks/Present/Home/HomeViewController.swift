@@ -50,6 +50,12 @@ final class HomeViewController: UIViewController {
         return eventListTitleView
     }()
     
+    private lazy var timeRecommendationTitleView: TimeRecommendationTitleView = {
+        let timeRecommendationTitleView = TimeRecommendationTitleView()
+        timeRecommendationTitleView.translatesAutoresizingMaskIntoConstraints = false
+        return timeRecommendationTitleView
+    }()
+    
     private lazy var dummyView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -103,6 +109,7 @@ final class HomeViewController: UIViewController {
         addRecommendationViewController(category: .personal)
         contentStackView.addArrangedSubview(eventListTitleView)
         addEventListViewController()
+        contentStackView.addArrangedSubview(timeRecommendationTitleView)
         contentStackView.addArrangedSubview(dummyView)
         
         func addRecommendationViewController(category: RecommendationCategory) {
@@ -157,6 +164,9 @@ final class HomeViewController: UIViewController {
         eventListViewController?.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         eventListViewController?.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         eventListViewController?.view.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        timeRecommendationTitleView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        timeRecommendationTitleView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        timeRecommendationTitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         eventListTitleView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor).isActive = true
         eventListTitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true

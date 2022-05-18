@@ -25,6 +25,7 @@ final class HomeViewModel {
             self?.displayName.value = response.displayName
             self?.mainEvent.value = response.mainEvent
             self?.personalRecommendations.value = response.personalRecommendations
+            self?.timeRecommendations.value = response.timeRecommendations
         }
     }
     

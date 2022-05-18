@@ -97,6 +97,15 @@ final class HomeViewController: UIViewController {
                 recommendationViewModel.recommendations.value = list
             }
         }
+        
+        homeViewModel?.timeRecommendations.bind{ [weak self] recommendation in
+            if recommendation.products.count <= 0 { return }
+            guard let recommendationViewModel = self?.recommendationViewControllers[.time]?.recommendationViewModel else { return }
+            DispatchQueue.global(qos: .userInteractive).async {
+                guard let list = self?.homeViewModel?.loadRecommendationData(productIds: recommendation.products) else { return }
+                recommendationViewModel.recommendations.value = list
+            }
+        }
     }
     
     private func addViews() {
@@ -111,6 +120,7 @@ final class HomeViewController: UIViewController {
         addEventListViewController()
         contentStackView.addArrangedSubview(timeRecommendationTitleView)
         contentStackView.addArrangedSubview(dummyView)
+        addRecommendationViewController(category: .time)
         
         func addRecommendationViewController(category: RecommendationCategory) {
             let viewModel = RecommendationViewModel(networkHandler: NetworkHandler())
@@ -159,20 +169,25 @@ final class HomeViewController: UIViewController {
         
         recommendationViewControllers[.personal]?.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         recommendationViewControllers[.personal]?.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        recommendationViewControllers[.personal]?.view.heightAnchor.constraint(equalToConstant: 160).isActive = true
-        
+        recommendationViewControllers[.personal]?.view.heightAnchor.constraint(equalToConstant: 180).isActive = true
+
+        eventListTitleView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor).isActive = true
+        eventListTitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+
         eventListViewController?.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         eventListViewController?.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        eventListViewController?.view.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        eventListViewController?.view.heightAnchor.constraint(equalToConstant: 200).isActive = true
+
         timeRecommendationTitleView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         timeRecommendationTitleView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         timeRecommendationTitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        eventListTitleView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor).isActive = true
-        eventListTitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         dummyView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor).isActive = true
         dummyView.heightAnchor.constraint(equalToConstant: 1500).isActive = true
+        recommendationViewControllers[.time]?.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        recommendationViewControllers[.time]?.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        recommendationViewControllers[.time]?.view.heightAnchor.constraint(equalToConstant: 250).isActive = true
     }
 }
 

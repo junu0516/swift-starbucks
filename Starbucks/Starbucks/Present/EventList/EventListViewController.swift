@@ -7,7 +7,6 @@ final class EventListViewController: UIViewController {
     private lazy var eventListCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 200, height: 180)
         layout.sectionInset = UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: 30)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -36,8 +35,8 @@ final class EventListViewController: UIViewController {
     private func setLayout() {
         eventListCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
         eventListCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        eventListCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        eventListCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        eventListCollectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        eventListCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
     private func bind() {
@@ -64,9 +63,9 @@ extension EventListViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.updateEventSubTitle(eventSubTitle: eventInfo.eventSubTitle)
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200, height: 180)
+        return CGSize(width: 220, height: collectionView.frame.height)
     }
     
 }

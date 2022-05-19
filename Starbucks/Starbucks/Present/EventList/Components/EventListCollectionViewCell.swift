@@ -51,12 +51,12 @@ final class EventListCollectionViewCell: UICollectionViewCell {
         eventImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         eventImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         eventImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        eventImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.75).isActive = true
+        eventImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.8).isActive = true
         
         eventTitleLabel.topAnchor.constraint(equalTo: eventImageView.bottomAnchor).isActive = true
         eventTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         eventTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        eventTitleLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.125).isActive = true
+        eventTitleLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.1).isActive = true
         
         eventSubTitleLabel.topAnchor.constraint(equalTo: eventTitleLabel.bottomAnchor).isActive = true
         eventSubTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true

@@ -120,10 +120,11 @@ final class HomeViewController: UIViewController {
         
         view.addSubview(homeHeaderView)
         view.addSubview(homeScrollView)
+        
         homeScrollView.addSubview(contentStackView)
+        
         contentStackView.addArrangedSubview(mainEventImageView)
         contentStackView.addArrangedSubview(personalRecommendatilTitleView)
-        
         contentStackView.addArrangedSubview(personalRecommendationView)
         contentStackView.addArrangedSubview(eventListTitleView)
         contentStackView.addArrangedSubview(eventListViewController.view)

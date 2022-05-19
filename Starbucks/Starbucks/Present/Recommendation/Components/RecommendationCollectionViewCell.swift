@@ -9,7 +9,7 @@ final class RecommendationCollectionViewCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 30
+        imageView.layer.cornerRadius = 60
         return imageView
     }()
     
@@ -39,11 +39,11 @@ final class RecommendationCollectionViewCell: UICollectionViewCell {
     
     private func setLayout() {
         productImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        productImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.7).isActive = true
+        productImageView.heightAnchor.constraint(equalTo: productImageView.widthAnchor).isActive = true
         productImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         productImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         
-        productNameLabel.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 10).isActive = true
+        productNameLabel.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 5).isActive = true
         productNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         productNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         productNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true

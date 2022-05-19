@@ -160,7 +160,7 @@ final class HomeViewController: UIViewController {
         
         recommendationViewControllers[.personal]?.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         recommendationViewControllers[.personal]?.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        recommendationViewControllers[.personal]?.view.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        recommendationViewControllers[.personal]?.view.heightAnchor.constraint(equalToConstant: 160).isActive = true
 
         eventListTitleView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor).isActive = true
         eventListTitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -175,7 +175,7 @@ final class HomeViewController: UIViewController {
         
         recommendationViewControllers[.time]?.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         recommendationViewControllers[.time]?.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        recommendationViewControllers[.time]?.view.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        recommendationViewControllers[.time]?.view.heightAnchor.constraint(equalToConstant: 160).isActive = true
     }
 }
 

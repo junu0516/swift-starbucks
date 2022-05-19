@@ -25,8 +25,7 @@ final class HomeViewController: UIViewController {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
-        stackView.alignment = .fill
+        stackView.distribution = .fill
         return stackView
     }()
     
@@ -119,17 +118,12 @@ final class HomeViewController: UIViewController {
             let viewModel = RecommendationViewModel(networkHandler: NetworkHandler(), jsonHandler: JSONHandler())
             let viewController = RecommendationViewController(recommendationViewModel: viewModel, category: category)
             recommendationViewControllers[category] = viewController
-            addChild(viewController)
-            viewController.didMove(toParent: self)
             contentStackView.addArrangedSubview(viewController.view)
-
         }
         
         func addEventListViewController() {
             let viewModel = EventListViewModel(networkHandler: NetworkHandler(), jsonHandler: JSONHandler())
             let viewController = EventListViewController(eventListViewModel: viewModel)
-            addChild(viewController)
-            viewController.didMove(toParent: self)
             eventListViewController = viewController
             contentStackView.addArrangedSubview(viewController.view)
         }

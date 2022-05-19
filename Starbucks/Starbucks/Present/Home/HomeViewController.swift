@@ -3,8 +3,21 @@ import UIKit
 final class HomeViewController: UIViewController {
     
     private var homeViewModel: HomeViewModel?
-    private var recommendationViewControllers: [RecommendationCategory: RecommendationViewController] = [:]
-    private var eventListViewController: EventListViewController?
+    private let recommendationViewControllers: [RecommendationCategory: RecommendationViewController] = {
+        var viewControllers: [RecommendationCategory:RecommendationViewController] = [:]
+        RecommendationCategory.allCases.forEach {
+            let viewModel = RecommendationViewModel(networkHandler: NetworkHandler(), jsonHandler: JSONHandler())
+            let viewController = RecommendationViewController(recommendationViewModel: viewModel, category: $0)
+            viewControllers[$0] = viewController
+
+        }
+        return viewControllers
+    }()
+    private let eventListViewController: EventListViewController = {
+        let viewModel = EventListViewModel(networkHandler: NetworkHandler(), jsonHandler: JSONHandler())
+        let viewController = EventListViewController(eventListViewModel: viewModel)
+        return viewController
+    }()
     
     private lazy var homeHeaderView: HomeHeaderView = {
         let headerView = HomeHeaderView()
@@ -102,31 +115,20 @@ final class HomeViewController: UIViewController {
     }
     
     private func addViews() {
+        guard let personalRecommendationView = recommendationViewControllers[.personal]?.view,
+              let timeRecommendationView = recommendationViewControllers[.time]?.view else { return }
+        
         view.addSubview(homeHeaderView)
         view.addSubview(homeScrollView)
         homeScrollView.addSubview(contentStackView)
         contentStackView.addArrangedSubview(mainEventImageView)
         contentStackView.addArrangedSubview(personalRecommendatilTitleView)
         
-        addRecommendationViewController(category: .personal)
+        contentStackView.addArrangedSubview(personalRecommendationView)
         contentStackView.addArrangedSubview(eventListTitleView)
-        addEventListViewController()
+        contentStackView.addArrangedSubview(eventListViewController.view)
         contentStackView.addArrangedSubview(timeRecommendationTitleView)
-        addRecommendationViewController(category: .time)
-        
-        func addRecommendationViewController(category: RecommendationCategory) {
-            let viewModel = RecommendationViewModel(networkHandler: NetworkHandler(), jsonHandler: JSONHandler())
-            let viewController = RecommendationViewController(recommendationViewModel: viewModel, category: category)
-            recommendationViewControllers[category] = viewController
-            contentStackView.addArrangedSubview(viewController.view)
-        }
-        
-        func addEventListViewController() {
-            let viewModel = EventListViewModel(networkHandler: NetworkHandler(), jsonHandler: JSONHandler())
-            let viewController = EventListViewController(eventListViewModel: viewModel)
-            eventListViewController = viewController
-            contentStackView.addArrangedSubview(viewController.view)
-        }
+        contentStackView.addArrangedSubview(timeRecommendationView)
     }
     
     private func setLayout() {
@@ -161,9 +163,9 @@ final class HomeViewController: UIViewController {
         eventListTitleView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor).isActive = true
         eventListTitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true
 
-        eventListViewController?.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        eventListViewController?.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        eventListViewController?.view.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        eventListViewController.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        eventListViewController.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        eventListViewController.view.heightAnchor.constraint(equalToConstant: 255).isActive = true
 
         timeRecommendationTitleView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         timeRecommendationTitleView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true

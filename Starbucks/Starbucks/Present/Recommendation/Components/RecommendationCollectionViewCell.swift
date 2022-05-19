@@ -17,9 +17,8 @@ final class RecommendationCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12)
-        label.text = "상품 이름"
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 2
+        label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
     
@@ -45,7 +44,8 @@ final class RecommendationCollectionViewCell: UICollectionViewCell {
         productImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         
         productNameLabel.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 10).isActive = true
-        productNameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        productNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        productNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         productNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
     

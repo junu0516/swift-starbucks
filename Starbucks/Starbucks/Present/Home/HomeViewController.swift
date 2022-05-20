@@ -140,6 +140,7 @@ final class HomeViewController: UIViewController {
         homeHeaderViewTopConstraint?.isActive = true
         homeHeaderView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         homeHeaderView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        homeHeaderView.heightAnchor.constraint(equalToConstant: 230).isActive = true
         
         homeScrollView.topAnchor.constraint(equalTo: homeHeaderView.bottomAnchor, constant: 10).isActive = true
         homeScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
@@ -185,9 +186,9 @@ extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let isScrollingDown = offsetY < 0
-        let limit = homeHeaderView.welcomeLabel.frame.height + 80
+        let limit = homeHeaderView.welcomeImageView.frame.height + 50
         let collapsableHeight = offsetY > limit ? limit : offsetY
-        self.homeHeaderView.welcomeLabel.alpha = isScrollingDown ? 1.0 : 1/offsetY
+        self.homeHeaderView.welcomeImageView.alpha = isScrollingDown ? 1.0 : 3/offsetY
         self.homeHeaderViewTopConstraint?.constant = -collapsableHeight
         self.view.layoutIfNeeded()
     }

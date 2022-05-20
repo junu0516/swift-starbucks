@@ -2,6 +2,14 @@ import UIKit
 
 final class HomeHeaderView: UIView {
     
+    private (set) var welcomeImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleToFill
+        imageView.image = UIImage(named: "beach")
+        return imageView
+    }()
+    
     private (set) var welcomeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -30,16 +38,22 @@ final class HomeHeaderView: UIView {
     }
     
     private func addViews() {
-        addSubview(welcomeLabel)
+        addSubview(welcomeImageView)
+        welcomeImageView.addSubview(welcomeLabel)
         addSubview(inboxButton)
     }
     
     private func setLayout() {
-        welcomeLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        welcomeLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-        welcomeLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        welcomeImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+        welcomeImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        welcomeImageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         
-        inboxButton.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 10).isActive = true
+        welcomeLabel.topAnchor.constraint(equalTo: welcomeImageView.topAnchor, constant: 20).isActive = true
+        welcomeLabel.heightAnchor.constraint(equalTo: welcomeImageView.heightAnchor, multiplier: 0.7).isActive = true
+        welcomeLabel.leadingAnchor.constraint(equalTo: welcomeImageView.leadingAnchor, constant: 20).isActive = true
+        welcomeLabel.trailingAnchor.constraint(equalTo: welcomeImageView.trailingAnchor).isActive = true
+        
+        inboxButton.topAnchor.constraint(equalTo: welcomeImageView.bottomAnchor, constant: 10).isActive = true
         inboxButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
         
         bottomAnchor.constraint(equalTo: inboxButton.bottomAnchor).isActive = true

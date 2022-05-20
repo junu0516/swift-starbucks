@@ -9,7 +9,7 @@ final class RecommendationCollectionViewCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 60
+        imageView.layer.cornerRadius = 70
         return imageView
     }()
     

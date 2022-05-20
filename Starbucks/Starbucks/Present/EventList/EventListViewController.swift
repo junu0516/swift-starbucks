@@ -65,7 +65,7 @@ extension EventListViewController: UICollectionViewDelegate, UICollectionViewDat
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 220, height: collectionView.frame.height)
+        return CGSize(width: 240, height: collectionView.frame.height)
     }
     
 }

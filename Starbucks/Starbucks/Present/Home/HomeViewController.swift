@@ -3,16 +3,17 @@ import UIKit
 final class HomeViewController: UIViewController {
     
     private var homeViewModel: HomeViewModel?
+    
     private let recommendationViewControllers: [RecommendationCategory: RecommendationViewController] = {
         var viewControllers: [RecommendationCategory:RecommendationViewController] = [:]
         RecommendationCategory.allCases.forEach {
             let viewModel = RecommendationViewModel(networkHandler: NetworkHandler(), jsonHandler: JSONHandler())
             let viewController = RecommendationViewController(recommendationViewModel: viewModel, category: $0)
             viewControllers[$0] = viewController
-
         }
         return viewControllers
     }()
+    
     private let eventListViewController: EventListViewController = {
         let viewModel = EventListViewModel(networkHandler: NetworkHandler(), jsonHandler: JSONHandler())
         let viewController = EventListViewController(eventListViewModel: viewModel)
@@ -140,7 +141,7 @@ final class HomeViewController: UIViewController {
         homeHeaderView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         homeHeaderView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         
-        homeScrollView.topAnchor.constraint(equalTo: homeHeaderView.bottomAnchor).isActive = true
+        homeScrollView.topAnchor.constraint(equalTo: homeHeaderView.bottomAnchor, constant: 10).isActive = true
         homeScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         homeScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         homeScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
@@ -160,7 +161,7 @@ final class HomeViewController: UIViewController {
         
         recommendationViewControllers[.personal]?.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         recommendationViewControllers[.personal]?.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        recommendationViewControllers[.personal]?.view.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        recommendationViewControllers[.personal]?.view.heightAnchor.constraint(equalToConstant: 180).isActive = true
 
         eventListTitleView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor).isActive = true
         eventListTitleView.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -175,7 +176,7 @@ final class HomeViewController: UIViewController {
         
         recommendationViewControllers[.time]?.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         recommendationViewControllers[.time]?.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        recommendationViewControllers[.time]?.view.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        recommendationViewControllers[.time]?.view.heightAnchor.constraint(equalToConstant: 180).isActive = true
     }
 }
 

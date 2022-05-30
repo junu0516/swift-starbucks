@@ -3,7 +3,7 @@ import UIKit
 final class RecommendationViewController: UIViewController {
     
     private var category: RecommendationCategory?
-    private (set) var recommendationViewModel: RecommendationViewModel?
+    private var recommendationViewModel: RecommendationViewModel?
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -29,6 +29,10 @@ final class RecommendationViewController: UIViewController {
         addViews()
         setLayout()
         bind()
+    }
+    
+    func updateRecommendationData(recommendations list: [String:ProductEntity]) {
+        self.recommendationViewModel?.recommendations.value = list
     }
     
     private func addViews() {
